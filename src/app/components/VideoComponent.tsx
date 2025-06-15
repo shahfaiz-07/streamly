@@ -1,7 +1,6 @@
 "use client"
 import { IVideoClient } from '@/types'
-import { Video } from '@imagekit/next'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const VideoComponent = ({ video }: { video: IVideoClient }) => {
   return (
@@ -10,11 +9,11 @@ const VideoComponent = ({ video }: { video: IVideoClient }) => {
         <div className="rounded-lg overflow-hidden relative w-full"
           style={{ aspectRatio: "9/16" }}
           >
-          <Video
+          <video
             src={video.videoUrl}
-            alt="Picture of the author"
+            // alt="Picture of the author"
             controls={video.controls}
-            preload="none"
+            // preload="none"
             poster={video.thumbnailUrl}
             className="w-full h-full object-cover"
           />

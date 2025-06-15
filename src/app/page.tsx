@@ -13,10 +13,8 @@ export default function Home() {
     console.log("Inside Fetching Videos")
     try {
       const response = await axios.get("/api/video")
-      console.log(response)
       if(response.data.success) {
         setVideos(response.data.data)
-        console.log("Videos fetched!!")
       }
     } catch (error) {
       console.log("Error fetching videos ::", error)
