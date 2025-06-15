@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎬 Stream.ly
 
-## Getting Started
+A full-stack video platform built with Next.js featuring authentication, video uploads, and browsing. Deployed using Docker on Render.
 
-First, run the development server:
+## 🚀 Features
+
+* 🔐 **Auth via NextAuth**
+  Supports Credentials, Google, Discord, and GitHub.
+
+* 📤 **Upload Videos**
+  Upload functionality powered by **ImageKit**.
+
+* 🎥 **Browse Videos**
+  Discover uploaded content in a sleek UI.
+
+* 🐳 **Dockerized Deployment**
+  Easily deployable on platforms like **Render**.
+
+---
+
+## 🛠️ Local Setup
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/shahfaiz-07/streamly
+cd streamly
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Setup environment variables
+
+Create a `.env` file (check `env.example` file):
+
+```env
+MONGO_URI=your_mongodb_connection_string          # Your MongoDB connection URI
+
+NEXTAUTH_SECRET=random_generated_secret_key       # Used to sign NextAuth JWT tokens
+
+NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=your_imagekit_pub_key      # Public API key from ImageKit
+NEXT_PUBLIC_IMAGEKIT_ENDPOINT=your_imagekit_url_endpoint   # ImageKit URL endpoint
+
+GOOGLE_AUTH_CLIENT=your_google_client_id          # Google OAuth Client ID
+GOOGLE_AUTH_SECRET=your_google_client_secret      # Google OAuth Client Secret
+
+GITHUB_AUTH_CLIENT=your_github_client_id          # GitHub OAuth Client ID
+GITHUB_AUTH_SECRET=your_github_client_secret      # GitHub OAuth Client Secret
+
+DISCORD_AUTH_CLIENT=your_discord_client_id        # Discord OAuth Client ID
+DISCORD_AUTH_SECRET=your_discord_client_secret    # Discord OAuth Client Secret
+
+NEXTAUTH_URL=http://localhost:3000                # Base URL for your app (e.g., localhost or deployed URL)
+
+```
+
+### 4. Run the app
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will be live on `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🐳 Running with Docker
 
-## Learn More
+### 1. Build the Docker image
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker build -t streamly .
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Run the container
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+docker run -p 3000:3000 --env-file .env --rm streamly
+```
 
-## Deploy on Vercel
+Now open `http://localhost:3000` in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 Deployment
+
+Deployed on [Render](https://render.com) with Docker. Check the [live demo](https://streamly-q7cg.onrender.com/)!
