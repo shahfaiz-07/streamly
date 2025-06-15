@@ -43,7 +43,7 @@ export const authOptions: NextAuthOptions = {
                     // console.log("Successfull")
                     return {
                         id: user._id.toString(),
-                        username: user.username.toString()
+                        username: ""
                     }
                 } catch (error) {
                     // console.log("Error in logging in :: ", error)

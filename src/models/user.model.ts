@@ -22,9 +22,8 @@ const userSchema = new Schema<IUser>({
     },
     username: {
         type: String,
-        default: "",
         trim: true,
-        unique: true
+        index: { unique: true, sparse: true }
     }
 }, {timestamps: true})
 
