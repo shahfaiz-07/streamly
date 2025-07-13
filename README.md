@@ -76,13 +76,14 @@ npm install
 
 ### 3. Setup environment variables
 
-Create a `.env` file in the root. You can reference `env.example` if needed.
+Create a `.env` file in the root.
 
 #### 🔷 For **ImageKit** (optional)
 
 ```env
 NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=your_imagekit_public_key
-NEXT_PUBLIC_IMAGEKIT_ENDPOINT=your_imagekit_url_endpoint
+NEXT_PUBLIC_IMAGEKIT_ENDPOINT=your_imagekit_endpoint
+IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
 ```
 
 #### 🔶 For **Cloudinary** (used in deployed version)
