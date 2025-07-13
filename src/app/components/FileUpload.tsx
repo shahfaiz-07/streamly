@@ -11,7 +11,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
-interface FileUploadProps {
+export interface FileUploadProps {
     onSuccess: (res: any) => void
     fileType?: "image" | "video"
     setLoading: (val: boolean) => void

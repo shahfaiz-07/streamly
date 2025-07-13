@@ -28,7 +28,11 @@ export default function Home() {
   return (
     <div className="min-h-full w-full p-4 md:p-6">
       <h2 className="text-xl md:text-2xl font-bold">Explore</h2>
-      <VideoFeed videos={videos}/>
+      {
+        loading ? (<div className="grid place-content-center min-h-[50vh]">
+          <span className="loading loading-bars loading-lg text-primary"></span>
+        </div>) : (<VideoFeed videos={videos}/>)
+      }
     </div>
   );
 }

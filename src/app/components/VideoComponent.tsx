@@ -13,7 +13,6 @@ const VideoComponent = ({ video }: { video: IVideoClient }) => {
             src={video.videoUrl}
             // alt="Picture of the author"
             controls={video.controls}
-            // preload="none"
             poster={video.thumbnailUrl}
             className="w-full h-full object-cover"
           />

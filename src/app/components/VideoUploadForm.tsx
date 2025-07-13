@@ -5,6 +5,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import CloudinaryUpload from './CloudinaryUpload'
 
 const VideoUploadForm = () => {
 
@@ -23,7 +24,9 @@ const VideoUploadForm = () => {
         setLoading(true);
         try {
             const response = await axios.post("/api/video", {
-                title, description: desc, videoUrl, thumbnailUrl: `${videoUrl}/ik-thumbnail.jpg`
+                title, description: desc, videoUrl, 
+                // thumbnailUrl: `${videoUrl}/ik-thumbnail.jpg` // - uncomment this while using ImageKit
+                thumbnailUrl: videoUrl.replace(/\.mp4$/, ".jpg") // Comment this line while using ImageKit
             })
 
             if (!response.data.success) {
@@ -64,7 +67,9 @@ const VideoUploadForm = () => {
                     <label className='label'>Description</label>
                     <textarea placeholder="Video Description" className="textarea textarea-primary validator" value={desc} minLength={5} required onChange={(e) => setDesc(e.target.value)} disabled={!session?.user.username}></textarea>
                     <div className='validator-hint hidden'>The description must be atleast 5 characters</div>
-                    <FileUpload onSuccess={onSuccess} fileType='video' setLoading={setLoading} disabled={!session?.user.username} />
+                    {/* <FileUpload onSuccess={onSuccess} fileType='video' setLoading={setLoading} disabled={!session?.user.username} /> */}
+                    {/* Uncomment the above line to use ImageKit upload and comment the below line */}
+                    <CloudinaryUpload onSuccess={onSuccess} fileType='video' setLoading={setLoading} disabled={!session?.user.username}/>
                     <button className="btn btn-outline btn-primary mt-2 w-fit mx-auto" type="submit" disabled={loading || videoUrl.length === 0}>
                         {
                             loading ? <span className="loading loading-infinity loading-xl"></span>
